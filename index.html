@@ -111,6 +111,7 @@
       background-position: center;
       background-repeat: no-repeat;
       background-color: #22232f;
+      /* Foto do Diógenes (já está no repositório) */
       background-image: url("mediahero.png");
       filter: saturate(1.05);
     }
@@ -207,6 +208,38 @@
       margin-bottom: 18px;
     }
 
+    /* --------- ÍCONES PADRONIZADOS (MESMO LAYOUT) --------- */
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 0, #ffe9b4, #f5c96b 40%, #c88c3a 80%);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 244, 210, 0.8);
+      color: #1a1204;
+      flex-shrink: 0;
+    }
+
+    .btn-icon i {
+      font-size: 1.2rem;
+    }
+
+    /* Todos os botões usam o mesmo padrão dourado */
+    .btn-whatsapp .btn-icon,
+    .btn-instagram .btn-icon,
+    .btn-email .btn-icon,
+    .btn-site .btn-icon,
+    .btn-plugo .btn-icon,
+    .btn-cheguei .btn-icon,
+    .btn-lukanna .btn-icon,
+    .btn-guaritore .btn-icon {
+      background: radial-gradient(circle at 30% 0, #ffe9b4, #f5c96b 40%, #c88c3a 80%);
+      color: #1a1204;
+    }
+
     .btn-line {
       display: flex;
       align-items: center;
@@ -248,23 +281,6 @@
       box-shadow: none;
     }
 
-    /* Base igual para todos os ícones dos botões */
-    .btn-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      flex-shrink: 0;
-    }
-
-    .btn-icon i {
-      font-size: 1.1rem;
-    }
-
     .btn-label {
       display: flex;
       flex-direction: column;
@@ -285,38 +301,9 @@
       opacity: 0.9;
     }
 
-    /* Botões de contato direto (mantive como estavam) */
-    .btn-whatsapp .btn-icon {
-      background: rgba(37, 211, 102, 0.18);
-      border-color: rgba(37, 211, 102, 0.4);
-      color: #25d366;
-    }
-
-    .btn-instagram .btn-icon {
-      background: radial-gradient(circle at 30% 0, #fdf497, #fd5949 40%, #d6249f 65%, #285aeb);
-      border-color: transparent;
-      color: #ffffff;
-    }
-
-    .btn-email .btn-icon {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.3);
-      color: #ffffff;
-    }
-
-    .btn-site .btn-icon {
-      color: #81b3ff;
-    }
-
-    /* Empresas – padronizado: mesmo fundo, muda só a cor do ícone */
-    .btn-lukanna .btn-icon  { color: #f5c96b; }
-    .btn-guaritore .btn-icon { color: #ffbc8f; }
-    .btn-cheguei .btn-icon   { color: #ff90c2; }
-    .btn-plugo .btn-icon     { color: #58c6ff; }
-
-    /* Bloco "Sobre" centralizado */
+    /* ------- BLOCO SOBRE / DESCRIÇÃO CENTRALIZADA ------- */
     .about-block {
-      margin-top: 10px;
+      margin-top: 8px;
       margin-bottom: 16px;
       text-align: center;
     }
@@ -325,22 +312,22 @@
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: rgba(199, 199, 212, 0.82);
+      color: rgba(199, 199, 212, 0.9);
       margin-bottom: 8px;
     }
 
     .about {
       font-size: 0.86rem;
-      line-height: 1.5;
+      line-height: 1.6;
       color: var(--muted);
-      max-width: 34rem;
+      max-width: 360px;
       margin: 0 auto;
     }
 
     .footer {
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       padding-top: 10px;
-      margin-top: 10px;
+      margin-top: 6px;
       font-size: 0.72rem;
       text-align: center;
       color: rgba(180, 180, 198, 0.9);
@@ -388,6 +375,7 @@
         </header>
 
         <div class="pill-row">
+          <!-- Quando subir o VCF para o repositório, este botão passa a funcionar -->
           <a class="pill-btn primary" href="diogenes-bitencourt.vcf" download>
             <i class="ri-id-card-line"></i>
             <span>Salvar contato</span>
@@ -489,10 +477,10 @@
         <div class="about-block">
           <div class="about-title">Sobre Diógenes</div>
           <div class="about">
-            Empresário, fundador e CEO do Grupo Lukanna, atuando na interseção entre Moda, Marketing e IA. Lidera marcas
-            como Lukanna Plissados, Guaritore Lenços e Cheguei Baby, e é cofundador da Plugo.ai, hub de automação inteligente
-            para empresas. Atua também como mentor e coach, levando sua experiência de mercado para acelerar o desenvolvimento
-            de novos profissionais e empreendedores.
+            Empresário, fundador e CEO do Grupo Lukanna, atuando na interseção entre Moda, Marketing e IA.
+            Lidera marcas como Lukanna Plissados, Guaritore Lenços e Cheguei Baby, e é cofundador da Plugo.ai,
+            hub de automação inteligente para empresas. Atua também como mentor e coach, levando sua experiência
+            de mercado para acelerar o desenvolvimento de novos profissionais e empreendedores.
           </div>
         </div>
 
