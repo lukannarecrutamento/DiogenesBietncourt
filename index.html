@@ -147,7 +147,7 @@
       opacity: 0.9;
     }
 
-    /* ================= BOTÕES PILL ================= */
+    /* ================= BOTÕES PILL (SALVAR / LIGAR) ================= */
 
     .pill-row {
       display: flex;
@@ -172,7 +172,6 @@
       position: relative;
       overflow: hidden;
 
-      /* interior ESCURO */
       background:
         linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 32%) top/100% 55% no-repeat,
         linear-gradient(180deg, #1b1611 0%, #0c0a08 70%, #050405 100%);
@@ -233,7 +232,7 @@
       opacity: 0.9;
     }
 
-    /* ================= LISTAS / ÍCONES ================= */
+    /* ================= LISTAS / ÍCONES (AQUI ENTRA O CONTORNO) ================= */
 
     .section-title {
       font-size: 0.8rem;
@@ -258,37 +257,24 @@
       padding: 11px 13px;
       border-radius: var(--radius-md);
       background: rgba(10, 10, 18, 0.75);
-      border: 1px solid transparent;          /* base transparente pro anel */
+      border: 1px solid transparent; /* necessário pro border-image */
+      border-image: linear-gradient(135deg, var(--gold-2), var(--gold-3)) 1;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       text-decoration: none;
       color: var(--text);
       font-size: 0.9rem;
       font-weight: 500;
-      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
       position: relative;
       overflow: hidden;
-    }
-
-    /* anel dourado fino nos botões de contato/empresas */
-    .btn-line::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 1px; /* linha mais fina */
-      background: linear-gradient(180deg, var(--gold-1) 0%, var(--gold-2) 40%, var(--gold-3) 75%, var(--gold-4) 100%);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      opacity: 0.9;
     }
 
     .btn-line:hover {
       transform: translateY(-1px);
       background: rgba(18, 18, 28, 0.95);
       box-shadow: 0 16px 28px rgba(0, 0, 0, 0.65);
+      border-image: linear-gradient(135deg, var(--gold-1), var(--gold-3)) 1;
     }
 
     .btn-line:active {
@@ -304,10 +290,8 @@
       opacity: 0.45;
       transform: none;
       box-shadow: none;
-    }
-
-    .btn-line.disabled::before {
-      opacity: 0.35; /* anel mais discreto no desabilitado */
+      border-image: none;
+      border-color: rgba(255,255,255,.12);
     }
 
     .btn-icon {
@@ -324,7 +308,7 @@
       color: var(--text);
       overflow: hidden;
       position: relative;
-      z-index: 1; /* acima do anel */
+      z-index: 1;
     }
 
     .btn-icon i {
@@ -343,13 +327,13 @@
       background: transparent;
     }
 
-    /* Empresas do grupo – sem fundo; só o contorno do ícone */
+    /* Empresas do grupo – sem fundo; só o ícone */
     .btn-company.btn-site .btn-icon i {
-      color: #ffffff; /* website branco */
+      color: #ffffff;
     }
 
     .btn-company.btn-instagram .btn-icon i {
-      color: #f5c96b; /* instagram dourado */
+      color: #f5c96b;
     }
 
     .btn-label {
