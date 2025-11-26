@@ -147,7 +147,7 @@
       opacity: 0.9;
     }
 
-    /* ================= BOTÕES PILL (SALVAR / LIGAR) ================= */
+    /* ================= BOTÕES PILL (topo) ================= */
 
     .pill-row {
       display: flex;
@@ -232,7 +232,7 @@
       opacity: 0.9;
     }
 
-    /* ================= LISTAS / ÍCONES (AQUI ENTRA O CONTORNO) ================= */
+    /* ================= LISTAS / ÍCONES ================= */
 
     .section-title {
       font-size: 0.8rem;
@@ -250,48 +250,69 @@
     }
 
     .btn-line {
+      position: relative;
       display: flex;
       align-items: center;
       gap: 10px;
       width: 100%;
       padding: 11px 13px;
-      border-radius: var(--radius-md);
-      background: rgba(10, 10, 18, 0.75);
-      border: 1px solid transparent; /* necessário pro border-image */
-      border-image: linear-gradient(135deg, var(--gold-2), var(--gold-3)) 1;
+      border-radius: var(--radius-pill);      /* volta pro shape de pílula */
+      background: rgba(10, 10, 18, 0.9);
+      border: none;                           /* sem borda sólida */
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       text-decoration: none;
       color: var(--text);
       font-size: 0.9rem;
       font-weight: 500;
-      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
-      position: relative;
       overflow: hidden;
+      transition: transform 0.15s ease, background 0.15s ease,
+                  box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+
+    /* contorno dourado degradê MAIS TRANSPARENTE */
+    .btn-line::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px; /* contorno fino */
+      background: linear-gradient(
+        120deg,
+        rgba(249,238,190,0.55),
+        rgba(233,201,127,0.05),
+        rgba(207,161,86,0.45),
+        rgba(140,101,47,0.25)
+      );
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.75; /* mais suave/transparente */
     }
 
     .btn-line:hover {
       transform: translateY(-1px);
-      background: rgba(18, 18, 28, 0.95);
+      background: rgba(18, 18, 28, 0.98);
       box-shadow: 0 16px 28px rgba(0, 0, 0, 0.65);
-      border-image: linear-gradient(135deg, var(--gold-1), var(--gold-3)) 1;
     }
 
     .btn-line:active {
       transform: translateY(1px);
       box-shadow: none;
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     .btn-line.disabled,
     .btn-line.disabled:hover,
     .btn-line.disabled:active {
       cursor: default;
-      opacity: 0.45;
+      opacity: 0.55;
       transform: none;
       box-shadow: none;
-      border-image: none;
-      border-color: rgba(255,255,255,.12);
+    }
+    .btn-line.disabled::before {
+      opacity: 0.35; /* aro mais apagado pro "em breve" */
     }
 
     .btn-icon {
@@ -327,11 +348,10 @@
       background: transparent;
     }
 
-    /* Empresas do grupo – sem fundo; só o ícone */
+    /* Empresas do grupo – ícones de linha */
     .btn-company.btn-site .btn-icon i {
       color: #ffffff;
     }
-
     .btn-company.btn-instagram .btn-icon i {
       color: #f5c96b;
     }
