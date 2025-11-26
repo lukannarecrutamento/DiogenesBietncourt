@@ -147,7 +147,7 @@
       opacity: 0.9;
     }
 
-    /* ================= BOTÕES PILL (topo) ================= */
+    /* ================= BOTÕES PILL ================= */
 
     .pill-row {
       display: flex;
@@ -172,6 +172,7 @@
       position: relative;
       overflow: hidden;
 
+      /* interior ESCURO */
       background:
         linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 32%) top/100% 55% no-repeat,
         linear-gradient(180deg, #1b1611 0%, #0c0a08 70%, #050405 100%);
@@ -250,69 +251,63 @@
     }
 
     .btn-line {
-      position: relative;
       display: flex;
       align-items: center;
       gap: 10px;
       width: 100%;
       padding: 11px 13px;
-      border-radius: var(--radius-pill);      /* volta pro shape de pílula */
-      background: rgba(10, 10, 18, 0.9);
-      border: none;                           /* sem borda sólida */
+      border-radius: var(--radius-md);
+      background: rgba(10, 10, 18, 0.75);
+      border: 1px solid transparent;          /* base transparente pro anel */
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       text-decoration: none;
       color: var(--text);
       font-size: 0.9rem;
       font-weight: 500;
+      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+      position: relative;
       overflow: hidden;
-      transition: transform 0.15s ease, background 0.15s ease,
-                  box-shadow 0.15s ease, opacity 0.15s ease;
     }
 
-    /* contorno dourado degradê MAIS TRANSPARENTE */
+    /* anel dourado fino nos botões de contato/empresas */
     .btn-line::before {
       content: "";
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      padding: 1px; /* contorno fino */
-      background: linear-gradient(
-        120deg,
-        rgba(249,238,190,0.55),
-        rgba(233,201,127,0.05),
-        rgba(207,161,86,0.45),
-        rgba(140,101,47,0.25)
-      );
+      padding: 1px; /* linha mais fina */
+      background: linear-gradient(180deg, var(--gold-1) 0%, var(--gold-2) 40%, var(--gold-3) 75%, var(--gold-4) 100%);
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
-      opacity: 0.75; /* mais suave/transparente */
+      opacity: 0.9;
     }
 
     .btn-line:hover {
       transform: translateY(-1px);
-      background: rgba(18, 18, 28, 0.98);
+      background: rgba(18, 18, 28, 0.95);
       box-shadow: 0 16px 28px rgba(0, 0, 0, 0.65);
     }
 
     .btn-line:active {
       transform: translateY(1px);
       box-shadow: none;
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     .btn-line.disabled,
     .btn-line.disabled:hover,
     .btn-line.disabled:active {
       cursor: default;
-      opacity: 0.55;
+      opacity: 0.45;
       transform: none;
       box-shadow: none;
     }
+
     .btn-line.disabled::before {
-      opacity: 0.35; /* aro mais apagado pro "em breve" */
+      opacity: 0.35; /* anel mais discreto no desabilitado */
     }
 
     .btn-icon {
@@ -329,7 +324,7 @@
       color: var(--text);
       overflow: hidden;
       position: relative;
-      z-index: 1;
+      z-index: 1; /* acima do anel */
     }
 
     .btn-icon i {
@@ -348,12 +343,13 @@
       background: transparent;
     }
 
-    /* Empresas do grupo – ícones de linha */
+    /* Empresas do grupo – sem fundo; só o contorno do ícone */
     .btn-company.btn-site .btn-icon i {
-      color: #ffffff;
+      color: #ffffff; /* website branco */
     }
+
     .btn-company.btn-instagram .btn-icon i {
-      color: #f5c96b;
+      color: #f5c96b; /* instagram dourado */
     }
 
     .btn-label {
