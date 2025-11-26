@@ -172,7 +172,7 @@
       position: relative;
       overflow: hidden;
 
-      /* interior ESCURO (não preenchido de dourado) */
+      /* interior ESCURO */
       background:
         linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 32%) top/100% 55% no-repeat,
         linear-gradient(180deg, #1b1611 0%, #0c0a08 70%, #050405 100%);
@@ -180,7 +180,6 @@
       box-shadow: 0 12px 26px rgba(0,0,0,.85);
     }
 
-    /* anel dourado estilo Dom Sarmento */
     .pill-btn::before {
       content: "";
       position: absolute;
@@ -208,13 +207,11 @@
     }
 
     .pill-btn.primary {
-      /* mesma base, só deixo o texto um pouco mais claro */
       color: #ffeec5;
     }
 
     .pill-btn.secondary {
       color: #ffe4aa;
-      /* interior ainda mais escuro pra diferenciar levemente */
       background:
         linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0) 30%) top/100% 55% no-repeat,
         linear-gradient(180deg, #18130f 0%, #080705 70%, #030203 100%);
@@ -261,7 +258,7 @@
       padding: 11px 13px;
       border-radius: var(--radius-md);
       background: rgba(10, 10, 18, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid transparent;          /* base transparente pro anel */
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       text-decoration: none;
@@ -269,12 +266,28 @@
       font-size: 0.9rem;
       font-weight: 500;
       transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* anel dourado fino nos botões de contato/empresas */
+    .btn-line::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px; /* linha mais fina */
+      background: linear-gradient(180deg, var(--gold-1) 0%, var(--gold-2) 40%, var(--gold-3) 75%, var(--gold-4) 100%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.9;
     }
 
     .btn-line:hover {
       transform: translateY(-1px);
       background: rgba(18, 18, 28, 0.95);
-      border-color: rgba(245, 201, 107, 0.4);
       box-shadow: 0 16px 28px rgba(0, 0, 0, 0.65);
     }
 
@@ -289,9 +302,12 @@
     .btn-line.disabled:active {
       cursor: default;
       opacity: 0.45;
-      border-style: dashed;
       transform: none;
       box-shadow: none;
+    }
+
+    .btn-line.disabled::before {
+      opacity: 0.35; /* anel mais discreto no desabilitado */
     }
 
     .btn-icon {
@@ -302,12 +318,13 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      /* *** SEM FUNDO, SEM BORDA *** */
       background: transparent;
       border: none;
       box-shadow: none;
       color: var(--text);
       overflow: hidden;
+      position: relative;
+      z-index: 1; /* acima do anel */
     }
 
     .btn-icon i {
@@ -340,6 +357,8 @@
       flex-direction: column;
       gap: 1px;
       overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
     .btn-main {
